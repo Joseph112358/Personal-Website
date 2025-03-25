@@ -1,9 +1,12 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
 const fs = require('fs');
 const matter = require("gray-matter");
 
-
+app.use(cors({
+  origin: 'http://localhost:5173',  // Replace with your Vite frontend URL
+}));
 
 async function getBlogs(directoryPath = './posts') {
   try {
@@ -80,10 +83,6 @@ app.get("/post/:id", async (req, res) => {
 
 app.get("/api" , async (req,res) => {
   
-  // // Works I think
-  // const thing = await getPostByID(1);
-  // console.log("trying this  " + thing.id)
-
   getBlogs()
   .then(posts => {
     console.log("Posts:", posts);
@@ -97,4 +96,4 @@ app.get("/api" , async (req,res) => {
 
 })
 
-app.listen(5000, () => console.log("Server started on port 5000"))
+app.listen(3000, () => console.log("Server started on port 3000"))

@@ -13,7 +13,7 @@ function Post(){
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch(`/post/${id}`); // Correct dynamic URL
+          const response = await fetch(`http://localhost:3000/post/${id}`); // Correct dynamic URL
           const data = await response.json();
           setBlogData(data);
           console.log("Fetched data:", data);
