@@ -2,9 +2,9 @@
     "name": "my-vite-react-app",
     "version": "1.0.0",
     "scripts": {
-      "dev": "vite",
+      "dev": "vite --host",
       "build": "vite build",
-      "serve": "vite preview"
+      "preview": "vite preview --host"
     },
     "dependencies": {
       "react": "^18.0.0",
