@@ -5,7 +5,7 @@ const fs = require('fs');
 const matter = require("gray-matter");
 
 app.use(cors({
-  origin: 'http://localhost:5173',  // Replace with your Vite frontend URL
+  origin: 'http://localhost:5173',
 }));
 
 async function getBlogs(directoryPath = './posts') {
