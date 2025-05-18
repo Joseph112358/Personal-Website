@@ -12,11 +12,8 @@ function Blog() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const response = await fetch('/api');
         const response = await fetch('http://localhost:5000/api');
         const data = await response.json();
-        // const response = await fetch('http://localhost:3000/api');
-        // const data = await response.json();
         setBackendData(data);
         console.log(data);
       } catch (error) {
@@ -43,7 +40,6 @@ function Blog() {
     <p>Loading...</p>
   )}
 </div>
-  {/* <BlogFeedPost name={name} age={age}> </BlogFeedPost> */}
   </>
     );
   }

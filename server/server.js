@@ -1,5 +1,7 @@
 const express = require('express')
 const cors = require('cors')
+const path = require('path');
+
 const app = express()
 const fs = require('fs');
 const matter = require("gray-matter");
@@ -8,6 +10,8 @@ app.use(cors({
   origin: 'http://localhost:5173',
   origin: ['http://192.168.1.119:3000'], // your actual React app URL
 }));
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 async function getBlogs(directoryPath = './posts') {
   try {
@@ -38,12 +42,14 @@ async function processMarkdownBlog(filePath) {
     const blogTitle = matterResult.data.title;
     const blogDate = matterResult.data.date;
     const blogId = matterResult.data.id
+    const blogImages = matterResult.data.images || [];
     const blogContent = matterResult.content; // Assuming content is in the Markdown content
 
     return {
       title: blogTitle,
       date: blogDate,
       id: blogId,
+      images: blogImages,
       content: blogContent
     };
   } catch (error) {

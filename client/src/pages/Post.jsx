@@ -30,12 +30,11 @@ function Post(){
 
     return (
       <div>
-           {/* back to blog container */}
            <p> <a href={`../blog`}>Back to blog </a> </p>
-           <h1></h1>
+           {/* <h1></h1> */}
         {blogData ? (
           <div>
-            <h1>{blogData.post.title}</h1>
+            <h2>{blogData.post.title}</h2>
             <ReactMarkdown>{blogData.post.content}</ReactMarkdown>
           </div>
         ) : (

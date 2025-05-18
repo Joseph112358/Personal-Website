@@ -30,8 +30,9 @@ function Intro(){
             room to figure out my next step). I ended up doing an internship at Nazare Point LTD, 
             where I learnt about quant trading</p>
 
-        <p>As for whats to come next, I'm currently applying to junior positions and degree
-            apprenticeships </p>
+        <p>As for whats to come next, I'm currently building projects, learning things, and improving
+            my programming skills!
+        </p>
     </>
     );
 }
