@@ -4,6 +4,16 @@ import ReactMarkdown from 'react-markdown';
 
 var blogData;
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+
+const markdownComponents = {
+  img: ({ src, alt }) => {
+    // Prepend backend URL if src is relative
+    const fullSrc = src.startsWith('http') ? src : `${API_BASE_URL}${src}`;
+    return <img src={fullSrc} alt={alt} style={{ maxWidth: '100%' }} />;
+  }
+};
+
 function Post(){
   const { id } = useParams(); // Get the dynamic parameter
 
@@ -14,7 +24,7 @@ function Post(){
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch(`http://localhost:5000/post/${id}`); // Correct dynamic URL
+          const response = await fetch(`${API_BASE_URL}/post/${id}`); // Correct dynamic URL
           const data = await response.json();
           setBlogData(data);
           console.log("Fetched data:", data);
@@ -35,7 +45,10 @@ function Post(){
         {blogData ? (
           <div>
             <h2>{blogData.post.title}</h2>
-            <ReactMarkdown>{blogData.post.content}</ReactMarkdown>
+            {/* <ReactMarkdown>{blogData.post.content}</ReactMarkdown> */}
+            <ReactMarkdown components={markdownComponents}>
+          {blogData.post.content}
+        </ReactMarkdown>
           </div>
         ) : (
           <p>Loading...</p>
