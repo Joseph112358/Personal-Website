@@ -13,7 +13,7 @@ function Blog() {
     const fetchData = async () => {
       try {
         // const response = await fetch('/api');
-        const response = await fetch('http://localhost:3000/api');
+        const response = await fetch('http://localhost:5000/api');
         const data = await response.json();
         // const response = await fetch('http://localhost:3000/api');
         // const data = await response.json();

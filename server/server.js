@@ -6,6 +6,7 @@ const matter = require("gray-matter");
 
 app.use(cors({
   origin: 'http://localhost:5173',
+  origin: ['http://192.168.1.119:3000'], // your actual React app URL
 }));
 
 async function getBlogs(directoryPath = './posts') {
@@ -96,4 +97,4 @@ app.get("/api" , async (req,res) => {
 
 })
 
-app.listen(3000, () => console.log("Server started on port 3000"))
+app.listen(5000, () => console.log("Server started on port 5000"))

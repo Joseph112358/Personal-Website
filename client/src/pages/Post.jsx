@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 var blogData;
 
@@ -13,7 +14,7 @@ function Post(){
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch(`http://localhost:3000/post/${id}`); // Correct dynamic URL
+          const response = await fetch(`http://localhost:5000/post/${id}`); // Correct dynamic URL
           const data = await response.json();
           setBlogData(data);
           console.log("Fetched data:", data);
@@ -25,20 +26,23 @@ function Post(){
       fetchData();
     }, [id]); // Depend on `id`
 
- 
+    
+
     return (
       <div>
+           {/* back to blog container */}
+           <p> <a href={`../blog`}>Back to blog </a> </p>
+           <h1></h1>
         {blogData ? (
           <div>
-            <p>Your blog title: {blogData.post.title}</p>
-            <p>{blogData.post.content}</p>
+            <h1>{blogData.post.title}</h1>
+            <ReactMarkdown>{blogData.post.content}</ReactMarkdown>
           </div>
         ) : (
           <p>Loading...</p>
         )}
       </div>
     );
-
 }
 
 export default Post

@@ -32,13 +32,15 @@ p {
 .right {
   font-size: 18px;
   font-weight: bold;
-  color: #007bff; /* Optional color for 'Blog' */
+  /* color: #007bff; Optional color for 'Blog' */
+  /* color: #007bff; */
   cursor: pointer; /* Optional for a clickable effect */
 }
 
 
 a {
   font-weight: 500;
+  /* color: #646cff; */
   color: #646cff;
   text-decoration: inherit;
 }
